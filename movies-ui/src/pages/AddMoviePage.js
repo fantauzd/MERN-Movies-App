@@ -7,8 +7,24 @@ export const AddMoviePage = () => {
     const [year, setYear] = useState('');
     const [language, setLanguage] = useState('');
 
+    const navigate = useNavigate()
+
     const addMovie = async () => {
-    
+        const newMovie = {title, year, language};
+        const response = await fetch('/movies', {
+            method: 'POST', 
+            body: JSON.stringify(newMovie), 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        if(response.status === 201) {
+            alert('Successfully added the movie');
+        } else {
+            alert('Failed to add movie');
+            console.log(`Failed to add movie, status code = ${response.status}`);
+        }
+        navigate("/");
     };
 
     return (
