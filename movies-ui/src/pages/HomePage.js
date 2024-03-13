@@ -4,7 +4,7 @@ import MovieList from '../components/MovieList';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function HomePage() {
+function HomePage({setMovieToEdit}) {
 
     const [movies, setMovies] = useState([]);
 
@@ -21,6 +21,7 @@ function HomePage() {
     };
 
     const onEdit = movie => {
+        setMovieToEdit(movie)
         navigate("/edit-movie");
     };
 
@@ -37,7 +38,7 @@ function HomePage() {
     return (
         <>
             <h2>List of Movies</h2>
-            <MovieList movies={movies} onDelete = {onDelete} onEdit = {onEdit}></MovieList>
+            <MovieList movies={movies} onDelete = {onDelete} onEdit = {onEdit} ></MovieList>
             <Link to="/add-movie">Add a movie</Link>
         </>
     );

@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export const EditMoviePage = () => {
+export const EditMoviePage = ({movieToEdit}) => {
 
-    const [title, setTitle] = useState('');
-    const [year, setYear] = useState('');
-    const [language, setLanguage] = useState('');
+    const [title, setTitle] = useState(movieToEdit.title);
+    const [year, setYear] = useState(movieToEdit.year);
+    const [language, setLanguage] = useState(movieToEdit.language);
 
     const navigate = useNavigate();
 
     const editMovie = async () => {
-        const response = await fetch('/movies/', {
+        const response = await fetch(`/movies/${movieToEdit._id}`, {
             method: 'PUT',
             body: JSON.stringify({title: title, year: year, language: language}),
             headers: {
@@ -31,17 +31,14 @@ export const EditMoviePage = () => {
             <h1>Edit Movie</h1>
             <input
                 type="text"
-                placeholder="Enter title here"
                 value={title}
                 onChange={e => setTitle(e.target.value)} />
             <input
                 type="number"
                 value={year}
-                placeholder="Enter year here"
                 onChange={e => setYear(e.target.value)} />
             <input
                 type="text"
-                placeholder="Enter language here"
                 value={language}
                 onChange={e => setLanguage(e.target.value)} />
             <button

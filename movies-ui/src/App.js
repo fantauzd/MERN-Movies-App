@@ -15,9 +15,9 @@ function App() {
       <Router>
         <div className="App-header">
 		<Routes>
-          <Route path="/" element={<HomePage movieToEdit={movieToEdit} setMovieToEdit={setMovieToEdit} />}/>
+          <Route path="/" element={<HomePage setMovieToEdit={setMovieToEdit} />}/>
           <Route path="/add-movie" element={<AddMoviePage />}/>
-          <Route path="/edit-movie" element={ <EditMoviePage movieToEdit={movieToEdit} setMovieToEdit={setMovieToEdit} />}/>
+          <Route path="/edit-movie" element={ <EditMoviePage movieToEdit={movieToEdit} />}/>
 		  </Routes>
           </div>
       </Router>
