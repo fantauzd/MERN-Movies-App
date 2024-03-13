@@ -10,7 +10,7 @@ export const EditMoviePage = () => {
     const navigate = useNavigate();
 
     const editMovie = async () => {
-        const response = await fetch('/movies', {
+        const response = await fetch('/movies/', {
             method: 'PUT',
             body: JSON.stringify({title: title, year: year, language: language}),
             headers: {
@@ -29,6 +29,24 @@ export const EditMoviePage = () => {
     return (
         <div>
             <h1>Edit Movie</h1>
+            <input
+                type="text"
+                placeholder="Enter title here"
+                value={title}
+                onChange={e => setTitle(e.target.value)} />
+            <input
+                type="number"
+                value={year}
+                placeholder="Enter year here"
+                onChange={e => setYear(e.target.value)} />
+            <input
+                type="text"
+                placeholder="Enter language here"
+                value={language}
+                onChange={e => setLanguage(e.target.value)} />
+            <button
+                onClick={editMovie}
+            >Save</button>
         </div>
     );
 }

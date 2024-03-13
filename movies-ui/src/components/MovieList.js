@@ -1,7 +1,7 @@
 import React from 'react';
 import Movie from './Movie';
 
-function MovieList({ movies, onDelete }) {
+function MovieList({ movies, onDelete, onEdit }) {
     return (
         <table id="movies">
             <thead>
@@ -14,7 +14,7 @@ function MovieList({ movies, onDelete }) {
                 </tr>
             </thead>
             <tbody>
-                {movies.map((movie, i) => <Movie movie={movie} onDelete = {onDelete} key={i} />)}
+                {movies.map((movie, i) => <Movie movie={movie} onDelete = {onDelete} onEdit ={onEdit} key={i} />)}
             </tbody>
         </table>
     );

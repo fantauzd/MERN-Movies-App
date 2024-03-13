@@ -8,6 +8,8 @@ function HomePage() {
 
     const [movies, setMovies] = useState([]);
 
+    const navigate = useNavigate();
+
     const onDelete = async _id => {
         const response = await fetch(`/movies/${_id}`, {method: 'DELETE'});
         if(response.status === 204) {
@@ -18,7 +20,9 @@ function HomePage() {
         }
     };
 
-    
+    const onEdit = movie => {
+        navigate("/edit-movie");
+    };
 
     const loadMovies = async movie => {
         const response = await fetch('/movies');
@@ -33,7 +37,7 @@ function HomePage() {
     return (
         <>
             <h2>List of Movies</h2>
-            <MovieList movies={movies} onDelete = {onDelete}></MovieList>
+            <MovieList movies={movies} onDelete = {onDelete} onEdit = {onEdit}></MovieList>
             <Link to="/add-movie">Add a movie</Link>
         </>
     );
