@@ -18,6 +18,8 @@ function HomePage() {
         }
     };
 
+    
+
     const loadMovies = async movie => {
         const response = await fetch('/movies');
         const movies = await response.json();
